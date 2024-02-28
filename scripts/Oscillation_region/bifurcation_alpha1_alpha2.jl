@@ -1,6 +1,6 @@
 using DrWatson
 @quickactivate "Nataha community model"
-include(srcdir("b2basics/bifurcation_alpha1_alpha2_functions.jl"))
+include(srcdir("Oscillation_region/bifurcation_alpha1_alpha2_functions.jl"))
 
 using Distributed
 using Alert
