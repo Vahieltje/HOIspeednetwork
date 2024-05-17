@@ -8,6 +8,8 @@ videos
 plots
 notebooks
 _research
+.venv
+.vscode
 
 ################################################################################
 #                                    Julia                                     #
