@@ -112,7 +112,7 @@ end
 updates m to the next timestep
 mᵢⱼ + (βᵢⱼₖ*nₖ-mᵢⱼ-1)*dt
 """
-function update_m!(ecosys::double_HOI_ecosystem, dt::Float64)
+function update_m!(ecosys::symmetric_HOI_ecosystem, dt::Float64)
     i = ecosys.HOI_species[1]
     j = ecosys.HOI_species[2]
     k = ecosys.HOI_species[3]

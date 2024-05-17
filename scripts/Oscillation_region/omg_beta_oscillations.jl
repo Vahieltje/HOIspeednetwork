@@ -13,38 +13,41 @@ Generates the matrix and figure of oscillation and coexistence regions for the 3
 # parameters #
 ##############
 
-ω_range = -3:0.2:2
-β_range = -80:2:0
+ω_range = -3:0.4:2
+β_range = -80:4:0
 # β_range = 0:1:40
 
-α12 = 2
-α23 = 2
+α12 = 1
+α23 = 1
 
-αs = [1.3, 1.3, 1.3]
+αs = [1.0, 1.0, 1.0]
 #αs = [1,0,1]
 
-HOI_type = double_HOI_ecosystem
-ijk_species = (1, 3, 2)
-intransitive = false
-superiority = (1, 2, 3)
-minimum_abundance = 1e-70
-stop_if_convergence = true
+HOI_type = symmetric_HOI_ecosystem         # can be single_HOI_ecosystem or symmetric_HOI_ecosystem
+ijk_species = (1, 2, 3)
+intransitive = true
+minimum_abundance = 1e-7
+stop_if_convergence = true          # stops the simulation of one system if it converges to a stable state
 
-get_new_data = true
+
+#########################
+# New data generation #
+#########################
+
+get_new_data = true             # if true, new data will be generated, if false, data will be loaded from file
 save_new_data = false & get_new_data
 savefig = true
-
 
 ########################
 # getting heatmap data #
 ########################
 
 println("αs = $αs, HOI_type = $HOI_type, ijk_species = $ijk_species, minimum_abundance = $minimum_abundance, intransitive = $intransitive")
-oscillation_file = filepath(; data_type="oscillation", αs, HOI_type, ijk_species, intransitive, superiority)
-coexistence_file = filepath(; data_type="coexistence", αs, HOI_type, ijk_species, intransitive, superiority)
+oscillation_file = filepath(; data_type="oscillation", αs, HOI_type, ijk_species, intransitive)
+coexistence_file = filepath(; data_type="coexistence", αs, HOI_type, ijk_species, intransitive)
 
 if get_new_data
-    convergence_matrix, coexistence_matrix = make_bifurcation_matrix(ω_range, β_range, ijk_species; αs, HOI_type, intransitive, superiority, minimum_abundance, stop_if_convergence)
+    convergence_matrix, coexistence_matrix = make_bifurcation_matrix(ω_range, β_range, ijk_species; αs, HOI_type, intransitive, minimum_abundance, stop_if_convergence)
 else
     convergence_matrix = Matrix(CSV.read(oscillation_file, DataFrame))
     coexistence_matrix = Matrix(CSV.read(coexistence_file, DataFrame))
@@ -103,12 +106,12 @@ hm2 = Makie.heatmap!(ax3, ω_range, β_range, convergence_oscillation_matrix, co
 
 if savefig
     save_folder = "paper/"
-    plot_name_1 = "osc_α=$(αs[1]).pdf"
-    save(plot_name_1, fig)
-    plot_name_2 = "coex_α=$(αs[1]).pdf"
-    save(plot_name_2, fig2)
-    plot_name_3 = "coex_osc_α=$(αs[1]).pdf"
-    save(plot_name_3, fig3)
+    plot_name_1 = "osc_α=$(αs[1]).png"
+    save(plotsdir(plot_name_1), fig)
+    plot_name_2 = "coex_α=$(αs[1]).png"
+    save(plotsdir(plot_name_2), fig2)
+    plot_name_3 = "coex_osc_α=$(αs[1]).png"
+    save(plotsdir(plot_name_3), fig3)
     println("saved $plot_name_3")
 end
 

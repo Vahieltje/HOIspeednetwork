@@ -14,7 +14,7 @@ using Distributed
 
 # using Alert
 
-function make_bifurcation_matrix(ω_range, β_range, ijk_species; αs, HOI_type, intransitive, superiority, minimum_abundance=10^(-7), stop_if_convergence=true)
+function make_bifurcation_matrix(ω_range, β_range, ijk_species; αs, HOI_type, intransitive, minimum_abundance=10^(-7), stop_if_convergence=true)
   max_time_unmodified = 5 * 10^4
   dt = 3 / 10^3
 
@@ -35,7 +35,7 @@ function make_bifurcation_matrix(ω_range, β_range, ijk_species; αs, HOI_type,
     pmap(1:length(β_range)) do j
       β = β_range[j]
       # print("β = $β, ")
-      n, m, A, R, death_rates = generate_nonuniform_3_cycle(αs; intransitive=intransitive, superiority)
+      n, m, A, R, death_rates = generate_nonuniform_3_cycle(αs; intransitive=intransitive)
       n .= 1
       m[ijk_species[1], ijk_species[2]] = 1
       ecosys = HOI_type(N, n, m, A, β, ijk_species, R, death_rates, ω)
@@ -72,7 +72,7 @@ end
 """
 Generate the name to save the heatmap datapoints
 """
-function filepath(; data_type="oscillation", αs, HOI_type, ijk_species, intransitive, superiority)
+function filepath(; data_type="oscillation", αs, HOI_type, ijk_species, intransitive)
   if !(data_type in ["oscillation", "coexistence"])
     error("data_type should be either 'oscillation' or 'coexistence'")
   end

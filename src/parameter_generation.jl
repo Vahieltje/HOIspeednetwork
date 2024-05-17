@@ -116,35 +116,6 @@ function generate_intransitive_parameters!(n::Vector{<:Real}, m, A::Matrix{Float
 end
 
 
-function generate_invaded_cycle(; invader_superiority::Vector{Int64}=[])
-    N = 4
-    n = Array{Float64}(undef, N)
-    m = Array{Float64}(undef, N, N)
-    R = Array{Float64}(undef, N)
-    d = Array{Float64}(undef, N)
-    A = Array{Float64}(undef, N, N)
-
-    generate_invaded_cycle!(n, m, A, R, d; invader_superiority)
-    return n, m, A, R, d
-end
-
-function generate_invaded_cycle!(n::Vector{<:Real}, m, A::Matrix{Float64}, R, d; invader_superiority::Vector{Int64}=[])
-    !(all(x -> x in (1, 2, 3), invader_superiority)) && error("invader_superiority contains values other than 1, 2, or 3.")
-    N = 4
-    n .= [1.0, 1.0, 1.0, 0.0]
-    m .= 1.0
-    R .= 1.0
-    d .= -1.0
-    A .= 0
-    A[1:3, 1:3] = [0 1 -1; -1 0 1; 1 -1 0]
-    A[4, 1:3] .= -1
-    A[1:3, 4] .= 1
-    for i in invader_superiority
-        A[4, i] = 1
-        A[i, 4] = -1
-    end
-end
-
 function generate_3_cycle(; intransitive=true, superiority=(1, 2, 3))
     N = 3
     n = [0.7, 0.6, 1.3]

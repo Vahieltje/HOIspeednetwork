@@ -63,7 +63,7 @@ end
 """
 An ecosystem where only one HOI interaction can be present, but both directions of the interaction are influenced by the modifier. The interaction is specified by the tuple HOI_species.
 """
-struct double_HOI_ecosystem <: one_HOI_ecosystem
+struct symmetric_HOI_ecosystem <: one_HOI_ecosystem
     N::Int64
     n::Vector{Float64}
     m::Matrix{Float64}
@@ -75,8 +75,8 @@ struct double_HOI_ecosystem <: one_HOI_ecosystem
     ω::Float64
 end
 
-function Base.copy(h::double_HOI_ecosystem)
-    return double_HOI_ecosystem(h.N, copy(h.n), copy(h.m), copy(h.A), h.β, copy(h.HOI_species), copy(h.R), copy(h.d), h.ω)
+function Base.copy(h::symmetric_HOI_ecosystem)
+    return symmetric_HOI_ecosystem(h.N, copy(h.n), copy(h.m), copy(h.A), h.β, copy(h.HOI_species), copy(h.R), copy(h.d), h.ω)
 end
 
 

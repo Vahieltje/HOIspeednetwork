@@ -13,19 +13,19 @@ println("start")
 ##############
 #Ecological Parameters
 N = 3                               # amount of species in the system
-ω = 10^(1)                          # modifier speed
-αs = [1,1,1]                        # pairwise interaction strengths: [α_AB, α_AC, α_BC]
-β = 20                              # modification strength
-HOI_species = (2, 1, 3)             # higher order interaction species: (i, j, k). i and j are the species involved in the pairwise interaction, k is the modifier
+ω = 10^(0)                          # modifier speed
+αs = [2,2,2]                        # pairwise interaction strengths: [α_AB, α_AC, α_BC]
+β = -6                              # modification strength
+HOI_species = (1, 2, 3)             # higher order interaction species: (i, j, k). i and j are the species involved in the pairwise interaction, k is the modifier
                                     # species 1 = A, 2= B, 3 = C
-HOI_type = single_HOI_ecosystem     # higher order interaction type: single = asymmetric, double = symmetric
+HOI_type = symmetric_HOI_ecosystem     # higher order interaction type: single = asymmetric, double = symmetric
 intransitive = true                 # is the system intransitive?
 
 
 #Simulation settings
 minimum_abundance = 1e-7            # minimum abundance to be considered present. If abundance goes lower, species is considered extinct
 stop_if_convergence = false         # stop the simulation if the system converges to a stable state
-max_time = 10^5                     # maximum number of timesteps of the simulation
+max_time = 3*10^4                     # maximum number of timesteps of the simulation
 dt = 3 / 10^3                       # timestep of the simulation       
 saved_steps = 10^4                  # amount of timesteps to save in the timeseries. Lower = faster, higher = more accurate visualisation
 
@@ -90,7 +90,7 @@ println("sd.convergence = $(sd.convergence)")
 # Saves the plot to the plots folder
 if savefig
   save_folder = "paper/"
-  plot_name = "temp_timeseries.pdf"
+  plot_name = "temp_timeseries.png"
   save(plotsdir(plot_name), fig)
 end
 

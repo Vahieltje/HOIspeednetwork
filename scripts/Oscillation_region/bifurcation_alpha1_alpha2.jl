@@ -17,7 +17,7 @@ CairoMakie.activate!()
 α23_range = 0:0.03:3
 
 
-HOI_types = (single_HOI_ecosystem, double_HOI_ecosystem)
+HOI_types = (single_HOI_ecosystem, symmetric_HOI_ecosystem)
 ijk_species_list = [(1, 2, 3), (1, 3, 2), (2, 3, 1)]
 intransitive = false
 superiority = (1, 2, 3)
