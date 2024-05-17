@@ -36,13 +36,13 @@ which auto-activate the project and enable local path handling from DrWatson.
 The ```scripts``` folder contains all the scripts necessary to generate the plots and data that was used in the paper.
 
 - ```system_timeseries_simulation.jl``` can be run to obtain the timeseries plot of a single ecosystem.
-![timeseries plot](/readme_plots/timeseries.png)
+![timeseries plot](readme_plots/timeseries.png)
 
 - ```scripts/Oscillation_region/omg_beta_oscillations.jl``` can be run to obtain figures for fixed values of $\alpha$, to obtain the regions of oscillations and coexistence, such as in Fig. 3 in the main text or Fig S1 in the supplementary material.
 
 
 <p float="left">
-  <img src="/readme_plots/osc_α=1.0.png" width="150" />
-  <img src="/readme_plots/coex_α=1.0.png" width="150" /> 
-  <img src="/readme_plots/coex_osc_α=1.0.png" width="150" />
+  <img src="readme_plots/osc_α=1.0.png" width="200" />
+  <img src="readme_plots/coex_α=1.0.png" width="200" /> 
+  <img src="readme_plots/coex_osc_α=1.0.png" width="200" />
 </p>
