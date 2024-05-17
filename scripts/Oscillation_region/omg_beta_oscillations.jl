@@ -71,7 +71,7 @@ colormap_oscillation_inverted = [colormap_oscillation[2], colormap_oscillation[1
 # Oscillation heatmap
 println("plotting heatmap")
 fig = Figure()
-ax = Axis(fig[1, 1], xlabel="modifier speed (log ω)", ylabel="Modification strength (β)", aspect=1, title="α = $αs")
+ax = Axis(fig[1, 1], xlabel="log ω", ylabel="β", aspect=1, title="α = $αs")
 plot_range = 101:501
 hm = Makie.heatmap!(ax, ω_range, β_range, convergence_matrix, colormap=colormap_oscillation, colorrange=(0, 1))
 

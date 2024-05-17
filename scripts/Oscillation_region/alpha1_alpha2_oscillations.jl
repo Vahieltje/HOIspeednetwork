@@ -10,8 +10,8 @@ CairoMakie.activate!()
 ##############
 
 
-ω_range = -3:0.1:2
-β_range = -80:1:0
+ω_range = -3:0.4:2
+β_range = -80:4:0
 # β_range = 0:0.1:40
 α12_range = 0:0.03:3
 α23_range = 0:0.03:3
