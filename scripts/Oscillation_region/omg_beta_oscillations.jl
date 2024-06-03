@@ -23,7 +23,7 @@ Generates the matrix and figure of oscillation and coexistence regions for the 3
 αs = [1.0, 1.0, 1.0]
 #αs = [1,0,1]
 
-HOI_type = symmetric_HOI_ecosystem         # can be single_HOI_ecosystem or symmetric_HOI_ecosystem
+HOI_type = symmetric_HOI_ecosystem         # can be asymmetric_HOI_ecosystem or symmetric_HOI_ecosystem
 ijk_species = (1, 2, 3)
 intransitive = true
 minimum_abundance = 1e-7

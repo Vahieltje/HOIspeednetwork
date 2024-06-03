@@ -14,11 +14,11 @@ println("start")
 #Ecological Parameters
 N = 3                               # amount of species in the system
 ω = 10^(0)                          # modifier speed
-αs = [2,2,2]                        # pairwise interaction strengths: [α_AB, α_AC, α_BC]
-β = -6                              # modification strength
-HOI_species = (1, 2, 3)             # higher order interaction species: (i, j, k). i and j are the species involved in the pairwise interaction, k is the modifier
+αs = [1,1,1]                        # pairwise interaction strengths: [α_AB, α_AC, α_BC]
+β = -1.7                              # modification strength
+HOI_species = (2, 1, 3)             # higher order interaction species: (i, j, k). i and j are the species involved in the pairwise interaction, k is the modifier
                                     # species 1 = A, 2= B, 3 = C
-HOI_type = symmetric_HOI_ecosystem     # higher order interaction type: single = asymmetric, double = symmetric
+HOI_type = asymmetric_HOI_ecosystem     # higher order interaction type: single = asymmetric, double = symmetric
 intransitive = true                 # is the system intransitive?
 
 

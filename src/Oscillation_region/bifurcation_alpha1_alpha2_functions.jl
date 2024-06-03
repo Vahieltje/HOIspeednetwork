@@ -14,7 +14,7 @@ using DataFrames
 """
 Generates the matrix of oscillation and coexistence for the 3-cycle
 """
-function make_bifurcation_matrix(ω_range, β_range, ijk_species; αs, HOI_type, intransitive, superiority)
+function make_bifurcation_matrix(ω_range, β_range, ijk_species; αs, HOI_type, intransitive)
   max_time = 10^7
   dt = 3 / 10^3
   saved_steps = 10^5
@@ -27,7 +27,7 @@ function make_bifurcation_matrix(ω_range, β_range, ijk_species; αs, HOI_type,
     # for i in 1:length(ω_range)
     ω = 10^ω_range[i]
     for (j, β) in enumerate(β_range)
-      n, m, A, R, death_rates = generate_nonuniform_3_cycle(αs; intransitive=intransitive, superiority)
+      n, m, A, R, death_rates = generate_nonuniform_3_cycle(αs; intransitive=intransitive)
       n .= 1
       m[ijk_species[1], ijk_species[2]] = 1
       ecosys = HOI_type(N, n, m, A, β, ijk_species, R, death_rates, ω)
@@ -46,7 +46,7 @@ end
 """
 Generate the name to save the heatmap datapoints
 """
-function filepath_omega_beta(; data_type="oscillation", αs, HOI_type, ijk_species, intransitive, superiority)
+function filepath_αs(; data_type="oscillation", αs, HOI_type, ijk_species, intransitive)
   if !(data_type in ["oscillation", "coexistence"])
     error("data_type should be either 'oscillation' or 'coexistence'")
   end
@@ -63,7 +63,7 @@ end
 
 function filename_last_part(αs, HOI_type, ijk_species)
   endstring = "_as=$(αs)"
-  if HOI_type == single_HOI_ecosystem
+  if HOI_type == asymmetric_HOI_ecosystem
     endstring *= "_single_"
   else
     endstring *= "_double_"

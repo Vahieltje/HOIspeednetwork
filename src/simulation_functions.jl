@@ -123,7 +123,7 @@ function update_m!(ecosys::symmetric_HOI_ecosystem, dt::Float64)
     return nothing
 end
 
-function update_m!(h::single_HOI_ecosystem, dt::Float64)
+function update_m!(h::asymmetric_HOI_ecosystem, dt::Float64)
     i = h.HOI_species[1]
     j = h.HOI_species[2]
     k = h.HOI_species[3]

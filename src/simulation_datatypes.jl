@@ -40,7 +40,7 @@ end
 """
 An ecosystem where only one HOI interaction can be present. The interaction is specified by the tuple HOI_species.
 """
-struct single_HOI_ecosystem <: one_HOI_ecosystem
+struct asymmetric_HOI_ecosystem <: one_HOI_ecosystem
     N::Int64
     n::Vector{Float64}
     m::Matrix{Float64}
@@ -52,12 +52,12 @@ struct single_HOI_ecosystem <: one_HOI_ecosystem
     ω::Float64
 end
 
-function Base.copy(h::single_HOI_ecosystem)
-    return single_HOI_ecosystem(h.N, copy(h.n), copy(h.m), copy(h.A), copy(h.β), h.HOI_species, copy(h.R), copy(h.d), h.ω)
+function Base.copy(h::asymmetric_HOI_ecosystem)
+    return asymmetric_HOI_ecosystem(h.N, copy(h.n), copy(h.m), copy(h.A), copy(h.β), h.HOI_species, copy(h.R), copy(h.d), h.ω)
 end
 
-function single_HOI_ecosystem(h::single_HOI_ecosystem; ω)
-    return single_HOI_ecosystem(h.N, h.n, h.m, h.A, h.β, h.HOI_species, h.R, h.d, ω)
+function asymmetric_HOI_ecosystem(h::asymmetric_HOI_ecosystem; ω)
+    return asymmetric_HOI_ecosystem(h.N, h.n, h.m, h.A, h.β, h.HOI_species, h.R, h.d, ω)
 end
 
 """

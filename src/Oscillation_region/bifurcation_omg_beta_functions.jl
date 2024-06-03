@@ -93,7 +93,7 @@ end
 
 function filename_last_part(αs, HOI_type, ijk_species)
   endstring = "_as=$(αs)"
-  if HOI_type == single_HOI_ecosystem
+  if HOI_type == asymmetric_HOI_ecosystem
     endstring *= "_single_"
   else
     endstring *= "_double_"
