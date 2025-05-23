@@ -91,6 +91,9 @@ println("sd.convergence = $(sd.convergence)")
 if savefig
   save_folder = "paper/"
   plot_name = "temp_timeseries.png"
+  if !isdir(plotsdir(plot_name))
+    mkpath(plotsdir(plot_name))
+  end
   save(plotsdir(plot_name), fig)
 end
 
