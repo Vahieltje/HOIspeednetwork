@@ -1,5 +1,5 @@
 using DrWatson
-@quickactivate "Nataha community model"
+@quickactivate "HOIspeednetwork"
 
 include(srcdir("simulation_functions.jl"))
 include(srcdir("parameter_generation.jl"))
