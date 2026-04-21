@@ -1,5 +1,7 @@
 # HOIspeednetwork
 
+This repository is now **deprecated**. If any updates are done to this repo, they will now be visible at https://github.com/tvgiel/HOIspeednetwork
+
 ## Installation
 This code base is using the [Julia Language](https://julialang.org/) and
 [DrWatson](https://juliadynamics.github.io/DrWatson.jl/stable/)
